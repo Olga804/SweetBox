@@ -1,7 +1,5 @@
 import java.util.Arrays;
 
-import static jdk.nashorn.internal.objects.ArrayBufferView.length;
-
 public class PresentBox implements Box {
   private Sweet[] sweets=new Sweet[0];
 
@@ -76,26 +74,12 @@ public class PresentBox implements Box {
 
     }
 
-    /*@Override
-    public String toString() {
-        for (int i=0;i<sweets.length;i++){
-            System.out.print(sweets[i].name," ");
-            System.out.print(sweets[i].weight," ");
-            System.out.println(sweets[i].price);
-        }
-        return 0;
-    }
-    */
+
 
     @Override
     public void printBox() {
 
             System.out.println(Arrays.toString(sweets));
-            /*
-            не получилось переопределить метод,
-            что бы выдавало информацию о всех
-            сладостях.
-             */
 
     }
 }
