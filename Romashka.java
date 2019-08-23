@@ -6,5 +6,12 @@ public class Romashka extends Sweet {
         this.color = color;
     }
 
-
+    @Override
+    public String toString() {
+        return "Romashka{" +
+                "Цвет'" + color + '\'' +
+                ", Вес" + weight +
+                ", Цена" + price +
+                "} " ;
+    }
 }
