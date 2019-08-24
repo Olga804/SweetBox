@@ -8,10 +8,9 @@ public class Romashka extends Sweet {
 
     @Override
     public String toString() {
-        return "Romashka{" +
-                "Цвет'" + color + '\'' +
-                ", Вес" + weight +
-                ", Цена" + price +
-                "} " ;
+        return "\nRomashka:" +"\n"+"\t"+
+                "Цвет = " + color + ";"+'\t' +
+                "Вес = " + weight + ";"+"\t"+
+                "Цена = " + price;
     }
 }
