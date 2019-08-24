@@ -8,10 +8,11 @@ public class AlpenGold extends Sweet{
 
     @Override
     public String toString() {
-        return "AlpenGold{" +
-                "Вкус'" + schmekt + '\'' +
-                ", Вес" + weight +
-                ", Цена" + price +
-                "} " ;
+        return "\nAlpenGold:" +"\n"+"\t"+
+                "Вкус = " + schmekt + ";"+"\t" +
+                "Вес = " + weight +";"+"\t"+
+                "Цена = " + price ;
+
     }
 }
+
