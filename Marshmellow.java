@@ -8,10 +8,9 @@ public class Marshmellow extends Sweet{
 
     @Override
     public String toString() {
-        return "Marshmellow{" +
-                "Размер" + size +
-                ", Вес" + weight +
-                ", Цена" + price +
-                "} " ;
+        return "\nMarshmellow:" +"\n"+"\t"+
+                "Размер = " + size +";"+"\t"+
+                "Вес = " + weight +";"+"\t"+
+                "Цена = " + price ;
     }
 }
