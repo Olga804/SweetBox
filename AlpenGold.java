@@ -6,12 +6,10 @@ public class AlpenGold extends Sweet{
         this.schmekt = schmekt;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "\nAlpenGold:" +"\n"+"\t"+
-                "Вкус = " + schmekt + ";"+"\t" +
-                "Вес = " + weight +";"+"\t"+
-                "Цена = " + price ;
+        return super.toString()+
+                "Вкус = " + schmekt + ";"+"\t";
 
     }
 }
