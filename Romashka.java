@@ -6,11 +6,9 @@ public class Romashka extends Sweet {
         this.color = color;
     }
 
-    @Override
+     @Override
     public String toString() {
-        return "\nRomashka:" +"\n"+"\t"+
-                "Цвет = " + color + ";"+'\t' +
-                "Вес = " + weight + ";"+"\t"+
-                "Цена = " + price;
+        return  super.toString()+"Цвет = " + color + ";"+'\t';
+
     }
 }
