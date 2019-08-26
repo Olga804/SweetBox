@@ -11,12 +11,14 @@ public class Main {
     box.add(new Marshmellow("Розовая зефирка",30,27,3));
 
 
+
+
     System.out.println(box.getBoxPrice());
     System.out.println(box.getBoxWeight());
     box.printBox();
-    box.delete(4);
-    box.optimizePrice(80);
-    box.printBox();
+    box.delete(-4);
+    box.delete(8);
+    box.optimizePrice(-70);
 
 
     }
