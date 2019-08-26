@@ -8,10 +8,8 @@ public class PresentBox implements Box {
     @Override
     public void add(Sweet sweet) {
         if (sweet!=null) {
-            int d = sweets.length;
-            Sweet[] copy = Arrays.copyOf(sweets, d + 1);
-            copy[d] = sweet;
-            sweets = Arrays.copyOf(copy, d + 1);
+            sweets = Arrays.copyOf(sweets, sweets.length+1);
+            sweets[sweets.length-1]=sweet;
         }
     }
 
@@ -35,63 +33,88 @@ public class PresentBox implements Box {
 
     @Override
     public void delete(int index) {
-        for (int i=index;i<sweets.length-1;i++){
-            sweets[i]=sweets[i+1];
+        if(index<sweets.length&&index>=0) {
+            for (int i = index; i < sweets.length - 1; i++) {
+                sweets[i] = sweets[i + 1];
 
+            }
+            sweets = Arrays.copyOf(sweets, sweets.length - 1);
+        } else if(index>=sweets.length){
+            System.out.println("Элемента с таким индексом не существует");
+
+        } else {
+            System.out.println("Введён некорректный индекс для удаления элемента");
         }
-        Sweet [] copy= Arrays.copyOf(sweets,sweets.length-1);
-        sweets=Arrays.copyOf(copy, copy.length);
+
 
     }
 
     @Override
     public void optimizeWeight(double maxWeight) {
+        if(maxWeight>0){
 
-        while (getBoxWeight()>maxWeight) {
-            double min = sweets[0].weight;
-            int index = 0;
-            for (int i = 0; i < sweets.length; i++) {
-                if (sweets[i].weight < min) {
-                    min = sweets[i].weight;
-                    index = i;
-                }
-            }
-            if(sweets.length==2){
-                if(index==0&&sweets[1].weight>maxWeight&&sweets[0].weight<maxWeight){
-                    index=1;
-                } else {
-                    if(index==1&&sweets[0].weight>maxWeight&&sweets[1].weight<maxWeight){
-                        index=0;
+            while (getBoxWeight()>maxWeight) {
+
+                int index = 0;
+                boolean sorted=true;
+                while (sorted){
+                    sorted=false;
+                    for(int i=0;i<sweets.length-1;i++){
+                        if(sweets[i].weight>sweets[i+1].weight){
+                            Sweet a=sweets[i+1];
+                            sweets[i+1]=sweets[i];
+                            sweets[i]=a;
+                            sorted=true;
+                        }
                     }
                 }
+
+                if (sweets.length==2){
+                    if(sweets[1].weight>maxWeight&&sweets[0].weight<maxWeight){
+                        index=1;
+                    }
+                }
+
+                delete(index);
             }
-            delete(index);
+            System.out.println("Вес оптимизирован:");
+
+
+        } else{
+            System.out.println("Некорректное значение максимального веса");
         }
-
-
     }
 
     @Override
     public void optimizePrice(double maxPrice) {
-        while (getBoxPrice()>maxPrice){
-            double min=sweets[0].price;
-            int index=0;
-            for (int i=0;i<sweets.length;i++){
-                if (sweets[i].price<min){
-                    min=sweets[i].price;
-                    index=i;
-                }
-            }
-            if(sweets.length==2){
-                if(index==0&&sweets[1].price>maxPrice&&sweets[0].price<maxPrice){
-                    index=1;
-                } else {
-                    if(index==1&&sweets[0].price>maxPrice&&sweets[1].price<maxPrice){
-                        index=0;
+        if (maxPrice > 0) {
+            while (getBoxPrice() > maxPrice) {
+                int index = 0;
+                boolean sorted = true;
+                while (sorted) {
+                    sorted = false;
+                    for (int i = 0; i < sweets.length - 1; i++) {
+                        if (sweets[i].price > sweets[i + 1].price) {
+                            Sweet a = sweets[i + 1];
+                            sweets[i + 1] = sweets[i];
+                            sweets[i] = a;
+                            sorted = true;
+                        }
                     }
                 }
+
+                if (sweets.length == 2) {
+                    if (sweets[1].price > maxPrice && sweets[0].price < maxPrice) {
+                        index = 1;
+                    }
+                }
+
+                delete(index);
             }
-            delete(index);
+            System.out.println("Цена оптимизирована");
+
+        }else{
+            System.out.println("Некорректное значение максимальной цены");
         }
 
     }
@@ -101,7 +124,9 @@ public class PresentBox implements Box {
     @Override
     public void printBox() {
 
-            System.out.println(Arrays.toString(sweets));
+            for(int i=0;i<sweets.length;i++){
+                System.out.println(sweets[i]);
+            }
 
     }
 }
