@@ -8,5 +8,12 @@
         this.weight = weight;
         this.price = price;
     }
+  @Override
+     public String toString() {
+         return "\n"+name + ": " +"\n"+"\t"+
+                 "Вес = " + weight +"\t"+
+                 "Цена = " + price +"\t"
+                 ;
+     }
 
 }
