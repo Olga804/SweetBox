@@ -6,11 +6,9 @@ public class Marshmellow extends Sweet{
         this.size = size;
     }
 
-    @Override
+   @Override
     public String toString() {
-        return "\nMarshmellow:" +"\n"+"\t"+
-                "Размер = " + size +";"+"\t"+
-                "Вес = " + weight +";"+"\t"+
-                "Цена = " + price ;
+        return super.toString()+
+                "Размер = " + size +";"+"\t";
     }
 }
